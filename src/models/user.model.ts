@@ -19,6 +19,12 @@ export class User extends Model {
     password: string;
 
     @Column()
+    department: string;
+
+    @Column({ default: "avatar.jpg" })
+    avatar: string;
+
+    @Column()
     active: boolean;
 
 }

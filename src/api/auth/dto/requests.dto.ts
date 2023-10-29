@@ -9,6 +9,11 @@ export class AuthSignInRequest {
     @IsNotEmpty()
     password: string;
 
+
+    @IsString()
+    @IsNotEmpty()
+    department: string;
+
     @IsString()
     @IsNotEmpty()
     rpassword: string;

@@ -24,7 +24,7 @@ export class UserService {
     }
 
     async createUserByEmail(dto: AuthSignInRequest): Promise<AuthSignInResponse> {
-        const { fullName, email, password, rpassword } = dto;
+        const { fullName, email, password, rpassword, department } = dto;
 
         if (await this.getUserByEmail(email)) {
             throw new ApiException(ApiEc.EmailAlreadyRegistered)
@@ -38,6 +38,7 @@ export class UserService {
             fullName: fullName,
             email: email,
             password: await this.credsService.passwordhash(password),
+            department: department,
             active: false
         });
 

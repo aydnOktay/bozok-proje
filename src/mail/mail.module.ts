@@ -16,7 +16,7 @@ import { join } from 'path';
         },
       },
       defaults: {
-        from: `from mail <${process.env.MAIL_USER}>`,
+        from: `Bozok Üniversitesi <${process.env.MAIL_USER}>`,
       },
       template: {
         dir: join(__dirname, 'templates'),
@@ -30,4 +30,4 @@ import { join } from 'path';
   providers: [MailService],
   exports: [MailService], // 👈 export for DI
 })
-export class MailModule {}
+export class MailModule { }
