@@ -44,9 +44,13 @@ export class UserService {
 
 
         const token = await this.jwtService.createJWT(newUser.email, newUser.id);
-        await this.mailService.sendUserConfirmation(newUser, token);
+        await this.mailService.sendUserConfirmation(newUser, token, "signup");
         return await this.userModel.save(newUser);
 
+    }
+
+    async updateUserById(id,data):Promise<any>{
+        
     }
 
 

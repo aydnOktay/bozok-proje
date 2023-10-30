@@ -24,3 +24,10 @@ export class AuthSignInRequest {
     email: string;
 
 }
+
+export class AuthResetPassword {
+    @IsString()
+    @IsNotEmpty()
+    @IsEmail()
+    email: string;
+}
