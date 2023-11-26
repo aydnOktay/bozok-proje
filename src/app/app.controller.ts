@@ -8,4 +8,14 @@ export class AppController {
     async homePage(@Res() res: Response) {
         res.render("index")
     }
+
+    @Get("/createproject")
+    async createProject(@Res() res: Response) {
+        res.render("createproject")
+    }
+
+    @Get("/myprojects")
+    async myProjects(@Res() res: Response) {
+        res.render("myprojects")
+    }
 }
