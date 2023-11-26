@@ -7,6 +7,7 @@ import { CredsModule } from 'src/services/creds/creds.module';
 import { JwtModule } from 'src/services/jwt/jwt.module';
 import * as dotenv from 'dotenv';
 import { MailModule } from 'src/mail/mail.module';
+import { AppController } from './app.controller';
 dotenv.config();
 
 @Module({
@@ -23,7 +24,7 @@ dotenv.config();
     }),
     AuthModule, UserModule, CredsModule,MailModule,JwtModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule { }
