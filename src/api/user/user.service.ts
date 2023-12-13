@@ -5,7 +5,7 @@ import { ApiEc, ApiException } from 'src/exceptions';
 import { User } from 'src/models';
 import { CredsService } from 'src/services/creds/creds.service';
 import { Repository } from 'typeorm';
-import { AuthSignInRequest, AuthSignInResponse } from '../auth/dto';
+import { AuthSignInRequest, AuthSignInResponse, AuthSignUpRequest } from '../auth/dto';
 import { MailService } from 'src/mail/mail.service';
 import { JwtService } from 'src/services/jwt/jwt.service';
 
@@ -23,7 +23,7 @@ export class UserService {
         return await this.userModel.findOneBy({ email });
     }
 
-    async createUserByEmail(dto: AuthSignInRequest): Promise<AuthSignInResponse> {
+    async createUserByEmail(dto: AuthSignUpRequest): Promise<AuthSignInResponse> {
         const { fullName, email, password, rpassword, department } = dto;
 
         if (await this.getUserByEmail(email)) {
@@ -49,8 +49,8 @@ export class UserService {
 
     }
 
-    async updateUserById(id,data):Promise<any>{
-        
+    async updateUserById(id, data): Promise<any> {
+
     }
 
 

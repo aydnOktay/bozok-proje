@@ -42,7 +42,7 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar2">
             <div class="logo">
-                <a href="/">
+                <a href="/anasayfa">
                     <img src="images/logo.png" alt="Cool Admin" />
                 </a>
             </div>
@@ -51,8 +51,10 @@
                     <div class="image img-cir img-120">
                         <img src="images/members/oktay.jpeg" alt="John Doe" />
                     </div>
-                    <h4 class="name">Oktay Aydın</h4>
-                    <a href="#">Çıkış Yap</a>
+                    <h4 class="name">
+                        <%= data.user.fullName %>
+                    </h4>
+                    <a href="/logout">Çıkış Yap</a>
                 </div>
                 <%-include("menu") %>
             </div>
@@ -67,8 +69,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
-                                <a href="#">
-                                    <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                                <a href="/anasayfa">
+                                    <img src="images/icon/logo-white.png" alt="" />
                                 </a>
                             </div>
                             <div class="header-button2">
@@ -78,34 +80,26 @@
                                 <div class="setting-menu js-right-sidebar d-none d-lg-block">
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                            <a href="/profil">
+                                                <i class="zmdi zmdi-account"></i>Hesabım</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            <a href="/myprojects">
+                                                <i class="fa fa-calendar"></i>Projelerim</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                            <a href="/createproject">
+                                                <i class="fa fa-folder"></i>Proje Oluştur</a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-globe"></i>Language</a>
+                                            <a href="/">
+                                                <i class="zmdi zmdi-globe"></i>Dil</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-pin"></i>Location</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-email"></i>Email</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-notifications"></i>Notifications</a>
+                                            <a href="/logout">
+                                                <i class="zmdi zmdi-pin"></i>Çıkış Yap</a>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +111,7 @@
             <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
                 <div class="logo">
                     <a href="#">
-                        <img src="images/icon/logo-white.png" alt="Cool Admin" />
+                        <img src="images/icon/logo-white.png" alt="" />
                     </a>
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar2">
@@ -125,7 +119,9 @@
                         <div class="image img-cir img-120">
                             <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
                         </div>
-                        <h4 class="name">Oktay Aydın</h4>
+                        <h4 class="name">
+                            <%= data.user.fullName %>
+                        </h4>
                         <a href="#">Çıkış Yap</a>
                     </div>
                     <%-include("menu") %>

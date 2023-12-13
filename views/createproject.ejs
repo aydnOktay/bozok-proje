@@ -10,14 +10,15 @@
                                 <strong>Proje Oluştur</strong>
                             </div>
                             <div class="card-body card-block">
-                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <form action="projects" method="POST" class="form-horizontal">
 
                                     <div class="row form-group">
                                         <div class="col col-md-3">
                                             <label for="text-input" class=" form-control-label">Proje Başlığı</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="text-input" class="form-control">
+                                            <input type="text" id="text-input" name="project_title"
+                                                class="form-control">
                                             <small class="form-text text-muted">Lütfen proje adını Tam olarak
                                                 girin</small>
                                         </div>
@@ -28,7 +29,8 @@
                                             <label for="text-input" class=" form-control-label">Proje Amacı</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="text-input" name="text-input" class="form-control">
+                                            <input type="text" id="text-input" name="project_purpose"
+                                                class="form-control">
                                             <small class="help-block form-text">Kısa ve öz olarak proje amacını
                                                 giriniz</small>
                                         </div>
@@ -39,7 +41,7 @@
                                             <label for="textarea-input" class=" form-control-label">Proje Detayı</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="textarea-input" rows="9"
+                                            <textarea name="project_description" id="textarea-input" rows="9"
                                                 class="form-control"></textarea>
                                         </div>
                                     </div>
@@ -49,7 +51,7 @@
                                             <label for="select" class=" form-control-label">Ekip Üyesi Seç</label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <select name="select" id="select" class="form-control">
+                                            <select name="project_users" id="select" class="form-control">
                                                 <option value="0">Oktay Aydın</option>
                                                 <option value="1">Hakkı Hakyemez</option>
                                                 <option value="2">Abdullah Ölürdedönmez</option>
@@ -57,24 +59,10 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3">
-                                            <label for="file-input" class=" form-control-label">Fotoğraf Seç</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input type="file" id="file-input" name="file-input"
-                                                class="form-control-file">
-                                            <small class="form-text text-muted">Opsiyonel</small>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="card-footer">
-                                <a href=""> <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm">
                                         <i class="fa fa-dot-circle-o"></i> Oluştur !
-                                    </button></a>
+                                    </button>
+                                </form>
                             </div>
                         </div>
 

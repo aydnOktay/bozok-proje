@@ -8,6 +8,7 @@ import { JwtModule } from 'src/services/jwt/jwt.module';
 import * as dotenv from 'dotenv';
 import { MailModule } from 'src/mail/mail.module';
 import { AppController } from './app.controller';
+import { ProjectsModule } from 'src/api/projects/projects.module';
 dotenv.config();
 
 @Module({
@@ -22,7 +23,7 @@ dotenv.config();
       entities: [User, Projects],
       synchronize: true
     }),
-    AuthModule, UserModule, CredsModule,MailModule,JwtModule
+    AuthModule, UserModule, CredsModule,MailModule,JwtModule,ProjectsModule
   ],
   controllers: [AppController],
   providers: [],

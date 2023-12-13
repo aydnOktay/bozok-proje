@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Res } from '@nestjs/common';
 import { UserService } from '../user/user.service';
-import { AuthResetPassword, AuthSignInRequest, AuthSignInResponse } from './dto';
+import { AuthResetPassword, AuthSignInRequest, AuthSignInResponse, AuthSignUpRequest } from './dto';
 import { ApiEc, ApiException } from 'src/exceptions';
 import { JwtService } from 'src/services/jwt/jwt.service';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -8,6 +8,7 @@ import { User } from 'src/models';
 import { Repository } from 'typeorm';
 import { MailService } from 'src/mail/mail.service';
 import { CredsService } from 'src/services/creds/creds.service';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -20,8 +21,27 @@ export class AuthService {
 
     ) { }
 
-    async signup(dto: AuthSignInRequest): Promise<AuthSignInResponse> {
+    async signup(dto: AuthSignUpRequest): Promise<AuthSignInResponse> {
         return await this.userService.createUserByEmail(dto);
+    }
+
+    async signin(dto: AuthSignInRequest, @Res() res: Response): Promise<any> {
+        const { email, password } = dto;
+        if (!(await this.userService.getUserByEmail(email))) {
+            throw new ApiException(ApiEc.UserNotFound)
+        }
+
+        const user = await this.userModel.findOneBy({ email: email });
+        if (! await this.credsService.passwordMatch(password, user.password)) {
+            throw new ApiException(ApiEc.PasswordNotMatch)
+        }
+
+        if (user.active == false) {
+            throw new ApiException(ApiEc.NotAuthorization)
+        }
+
+        const token = await this.jwtService.createSessionJWT(user.email, user.id);
+        res.redirect("/anasayfa")
     }
 
     async userEmailConfirm(token: string): Promise<any> {
@@ -59,8 +79,8 @@ export class AuthService {
 
     }
 
-    async resetPassword(dto,token):Promise<any>{
-        const {email} = await this.jwtService.verifyResetPasswordJWT(token);
+    async resetPassword(dto, token): Promise<any> {
+        const { email } = await this.jwtService.verifyResetPasswordJWT(token);
         const user = await this.userService.getUserByEmail(email);
         if (!user) {
             throw new ApiException(ApiEc.UserNotFound);
@@ -68,7 +88,7 @@ export class AuthService {
 
         const hashedPassword = await this.credsService.passwordhash(user.password);
         await this.userService
-    }   
+    }
 
 
 }

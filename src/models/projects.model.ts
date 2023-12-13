@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToOne,ManyToOne, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, ManyToOne, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from "typeorm";
 import { Model } from 'objection';
 import { Visibility } from "src/common";
 import { User } from "./user.model";
@@ -14,19 +14,17 @@ export class Projects extends Model {
     project_title: string;
 
     @Column()
+    project_purpose: string;
+
+    @Column()
     project_description: string;
 
     @Column()
     @ManyToOne(type => User, { eager: true })
     @JoinColumn({ name: "project_admin", referencedColumnName: "id" })
-    project_admin:User;
+    project_admin: User;
 
-    @Column()
-    visibility: Visibility;
-
-    // @Column()
-    // @ManyToMany(type => User, { eager: true }) // Bir projenin birden çok üyesi (users) olabilir
-    // @JoinTable() 
-    // project_members:User[];
+    @ManyToMany(() => User, user => user.id)
+    project_users: User[];
 
 }
